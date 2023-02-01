@@ -1,14 +1,11 @@
 password_list = []
-try:
-    password = input('Введите цифры: ')  # получаем пароль от пользователя
-    # print(password)
-    for i in password:  # в цикле к каждое значение уваличиваем на 100
-        password_list.append(int(i) + 100)  # записываем результат в password_list
-        # print(password_list)
-
-except ValueError as e:  # ловим ошибку при введении посторонних символов
-    print('Введите только цифры!')
-
-else:
-    kod_password = str(password_list)[1:-1].replace(", ", "")  # password_list преобразовываем в страку удалив лишние символы
-    print("Кодированный пароль: ", kod_password)
+password = input('Введите символы: ')  # получаем пароль от пользователя
+for i in password:  # в цикле к каждое значение уваличиваем на 100
+    if i.isdigit():
+      password_list.append(int(i) + 100)  # записываем результат в password_list
+    else:
+      password_list.append('100' + i)  # записываем результат в password_list
+# print(password_list)
+kod_password = str(password_list).replace(", ", "")  # password_list преобразовываем в строку удалив лишние символы
+kod_password = kod_password[1:-1].replace("'","")
+print("Кодированный пароль: ", kod_password)
